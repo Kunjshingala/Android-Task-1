@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -13,10 +14,12 @@ import com.example.finaltask1.DataModel.CardModal;
 
 import java.util.ArrayList;
 
-    public class RecyclerContactAdapter extends RecyclerView.Adapter<RecyclerContactAdapter.ViewHolder> {
+public class RecyclerContactAdapter extends RecyclerView.Adapter<RecyclerContactAdapter.ViewHolder> {
 
     Context context;
     ArrayList<CardModal> userList;
+
+    ImageView editButton,deleteButton;
 
 
     RecyclerContactAdapter(Context context, ArrayList<CardModal> userList) {
@@ -46,6 +49,7 @@ import java.util.ArrayList;
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView txtName, txtEmail;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             txtName = itemView.findViewById(R.id.contactName);

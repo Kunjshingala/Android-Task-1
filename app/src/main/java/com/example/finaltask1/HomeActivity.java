@@ -19,7 +19,7 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        RecyclerView recyclerView = findViewById(R.id.recyclerContact);
+        RecyclerView recyclerView = findViewById(R.id.recyclerUser);
 
         userArray.add(new CardModal("Kunj", "kunjshingala.p@gmail.com"));
         userArray.add(new CardModal("Ram", "ram@gmail.com"));
