@@ -2,18 +2,27 @@ package com.example.finaltask1.DataModel;
 
 public class DataModal {
 
-    private String name;
-    private String email;
-    private String secondaryEmail;
-    private String number;
-    private String gender;
-    private String city;
-    private String country;
-    private String language;
-    private String favoriteCity;
+    public String name;
+    public String email;
+    public String secondaryEmail;
+    public String contact;
+    public String gender;
+    public String city;
+    public String country;
+    public String language;
+    public String favoriteCity;
 
-    DataModal() {
+    public DataModal(String email, String name, String contact, String gender, String city, String country, String language, String secondaryEmail, String favoriteCity) {
+        this.email = email;
+        this.name = name;
+        this.contact = contact;
+        this.gender = gender;
+        this.city = city;
+        this.country = country;
+        this.language = language;
+        this.favoriteCity = favoriteCity;
     }
+//    public DataModal(){}
 
     public String getName() {
         return name;
@@ -39,12 +48,12 @@ public class DataModal {
         this.secondaryEmail = secondaryEmail;
     }
 
-    public String getNumber() {
-        return number;
+    public String getContact() {
+        return contact;
     }
 
-    public void setNumber(String number) {
-        this.number = number;
+    public void setContact(String contact) {
+        this.contact = contact;
     }
 
     public String getGender() {
