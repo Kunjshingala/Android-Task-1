@@ -1,0 +1,9 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name" tools:ignore="Typos">FinalTask1</string>
+    <string name="login">Login</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="log_in">Log In</string>
+    <string name="webClientId">620838854725-pm0rtu47poaivvpct8i7h7dr20oiulsm.apps.googleusercontent.com</string>
+    <string name="register">Register</string>
+</resources>
