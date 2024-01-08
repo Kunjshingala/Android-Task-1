@@ -1,5 +1,6 @@
 package com.example.finaltask1;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -13,7 +14,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.finaltask1.DataModel.CardModal;
 import com.example.finaltask1.DataModel.DataModal;
 
 import java.util.ArrayList;
@@ -21,13 +21,14 @@ import java.util.ArrayList;
 public class RecyclerContactAdapter extends RecyclerView.Adapter<RecyclerContactAdapter.ViewHolder> {
 
     Context context;
-//    Activity activity;
+    Activity activity;
     ArrayList<DataModal> userList;
 
 
-    RecyclerContactAdapter(Context context, ArrayList<DataModal> userList) {
+    RecyclerContactAdapter(Activity activity, Context context, ArrayList<DataModal> userList) {
         this.context = context;
         this.userList = userList;
+        this.activity = activity;
     }
 
     @NonNull
@@ -39,17 +40,21 @@ public class RecyclerContactAdapter extends RecyclerView.Adapter<RecyclerContact
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerContactAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull RecyclerContactAdapter.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         holder.txtName.setText(userList.get(position).name);
         holder.txtEmail.setText(userList.get(position).email);
 
-//        holder.userComponent.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(context, MainActivity.class);
-//                activity.startActivityForResult(intent, 1);
-//            }
-//        });
+        //Error
+        holder.userCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, ManageUserActivity.class);
+                intent.putExtra("email", userList.get(position).email);
+                intent.putExtra("name", userList.get(position).name);
+                activity.startActivityForResult(intent, 1);
+            }
+        });
+
     }
 
     @Override
@@ -60,12 +65,14 @@ public class RecyclerContactAdapter extends RecyclerView.Adapter<RecyclerContact
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView txtName, txtEmail;
-        LinearLayout userComponent;
+        LinearLayout userCard;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             txtName = itemView.findViewById(R.id.userName);
             txtEmail = itemView.findViewById(R.id.userEmail);
+            userCard = itemView.findViewById(R.id.userRow);
         }
     }
+
 }

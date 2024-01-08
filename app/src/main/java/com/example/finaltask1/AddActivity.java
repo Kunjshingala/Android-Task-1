@@ -51,8 +51,8 @@ public class AddActivity extends AppCompatActivity {
 //
                 if (isAdd) {
                     Toast.makeText(AddActivity.this, "Add successfully", Toast.LENGTH_SHORT).show();
-//                    Intent intent = new Intent(AddActivity.this, HomeActivity.class);
-
+                    Intent intent = new Intent(AddActivity.this, HomeActivity.class);
+                    startActivity(intent);
                 } else {
                     Toast.makeText(AddActivity.this, "Something goes wrong", Toast.LENGTH_SHORT).show();
                 }

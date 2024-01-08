@@ -32,7 +32,7 @@ public class HomeActivity extends AppCompatActivity {
         ArrayList<DataModal> userList = dbHelper.getAllUserDetailsHelper();
 
 
-        RecyclerContactAdapter adapter = new RecyclerContactAdapter(this, userList);
+        RecyclerContactAdapter adapter = new RecyclerContactAdapter(HomeActivity.this,this, userList);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
