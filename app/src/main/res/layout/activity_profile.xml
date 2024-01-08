@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:orientation="vertical"
+    android:padding="20dp"
+    tools:context=".ProfileActivity">
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="50dp"
+        android:gravity="center"
+        android:text="@string/profile"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/loggedName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:gravity="center"
+        android:inputType="text"
+        android:text="@string/name"
+        android:textSize="30sp" />
+
+    <TextView
+        android:id="@+id/loggedEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="@string/email"
+        android:textSize="20sp" />
+
+    <EditText
+        android:id="@+id/loggedContact"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:text="@string/contact_number"
+        android:textSize="15sp" />
+
+    <EditText
+        android:id="@+id/loggedGender"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:text="@string/gender"
+        android:textSize="15sp" />
+
+    <EditText
+        android:id="@+id/loggedCity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:text="@string/city"
+        android:textSize="15sp" />
+
+    <EditText
+        android:id="@+id/loggedCountry"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:text="@string/country"
+        android:textSize="15sp" />
+
+    <EditText
+        android:id="@+id/loggedLanguage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:text="@string/language"
+        android:textSize="15sp" />
+
+    <EditText
+        android:id="@+id/loggedSecondryEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:text="@string/secondary_email"
+        android:textSize="15sp" />
+
+    <EditText
+        android:id="@+id/loggedFavoriteCity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:text="@string/favorite_city"
+        android:textSize="15sp" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_saveUser"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="50dp"
+        android:background="#9C27B0"
+        android:text="@string/save" />
+</LinearLayout>

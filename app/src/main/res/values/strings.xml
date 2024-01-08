@@ -8,11 +8,18 @@
     <string name="register">Register</string>
     <string name="city">City</string>
     <string name="favorite_city">Favorite City</string>
-    <string name="secondary_email">secondary Email</string>
+    <string name="secondary_email">Secondary Email</string>
     <string name="language">Language</string>
     <string name="country">Country</string>
     <string name="gender">Gender</string>
     <string name="contact_number">Contact Number</string>
     <string name="add">add</string>
     <string name="name">Name</string>
+    <string name="profile">Profile</string>
+    <string name="home">Home</string>
+    <string name="logout">Logout</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="save">Save</string>
+    <string name="or">OR</string>
 </resources>

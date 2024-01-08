@@ -4,7 +4,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -30,6 +32,8 @@ public class Login extends AppCompatActivity {
     GoogleSignInClient mGoogleSignInClient;
     private FirebaseAuth mAuth;
 
+    public String name, email;
+
     GoogleSignInOptions gso;
 
     @Override
@@ -38,21 +42,26 @@ public class Login extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         mAuth = FirebaseAuth.getInstance();
+        if (mAuth != null) {
+            Intent intent = new Intent(this, HomeActivity.class);
+            startActivity(intent);
+        } else {
+            gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                    .requestIdToken(getString(R.string.webClientId))
+                    .requestEmail()
+                    .build();
 
-        gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(getString(R.string.webClientId))
-                .requestEmail()
-                .build();
+            mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
-        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
-        signInButton = findViewById(R.id.sign_in_button);
+            signInButton = findViewById(R.id.sign_in_button);
 
-        signInButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                signIn();
-            }
-        });
+            signInButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    signIn();
+                }
+            });
+        }
     }
 
     private void signIn() {
@@ -93,6 +102,14 @@ public class Login extends AppCompatActivity {
                             Toast.makeText(Login.this, "Success", Toast.LENGTH_SHORT).show();
 
                             FirebaseUser currentUser = mAuth.getCurrentUser();
+                            email = currentUser.getEmail();
+                            name = currentUser.getDisplayName();
+
+                            //Save name, email Into Shared Pref..
+                            writeSharedPreferences(email, name);
+                            Log.d("SharedPref", "Shared pref written ===============>" + email + "         " + name);
+
+                            // Send user to Home Activity
                             Intent intent = new Intent(Login.this, HomeActivity.class);
                             intent.putExtra("name", currentUser.getEmail());
                             startActivity(intent);
@@ -104,5 +121,16 @@ public class Login extends AppCompatActivity {
                         }
                     }
                 });
+    }
+
+    public void writeSharedPreferences(String email, String name) {
+
+        SharedPreferences sharedPref = getSharedPreferences("userLog", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+
+        editor.putString("userEmail", email);
+        editor.putString("userName", name);
+        editor.apply();
+
     }
 }
