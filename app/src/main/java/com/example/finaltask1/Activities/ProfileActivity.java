@@ -3,7 +3,6 @@ package com.example.finaltask1.Activities;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.finaltask1.R;
+import com.example.finaltask1.Utils.SharedPrefUtils;
 
 public class ProfileActivity extends AppCompatActivity {
 
@@ -25,8 +25,6 @@ public class ProfileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
-
-        Log.d("onCreate", "onCreate: called ");
 
         userEmail = findViewById(R.id.loggedEmail);
         userName = findViewById(R.id.loggedName);
@@ -41,21 +39,18 @@ public class ProfileActivity extends AppCompatActivity {
         userSaveButton = findViewById(R.id.btn_saveUser);
 
         // Get Shred Pref.
-        SharedPreferences preferences = getSharedPreferences("userLog", MODE_PRIVATE);
-        Log.d("SharedPref", "============> Pref Get");
+        SharedPreferences preferences = getSharedPreferences(SharedPrefUtils.prefName, MODE_PRIVATE);
 
         //set EditText value
-        String email = preferences.getString("userEmail", null);
-        String name = preferences.getString("userName", null);
-        String contact = preferences.getString("contact", null);
-        String gender = preferences.getString("gender", null);
-        String city = preferences.getString("city", null);
-        String country = preferences.getString("country", null);
-        String language = preferences.getString("language", null);
-        String secondryEmail = preferences.getString("secondryEmail", null);
-        String favoriteCity = preferences.getString("favoriteCity", null);
-
-        Log.d("userDatails", "get values=======>" + email + "  " + name + "  " + contact + "  " + gender + "  " + city + "  " + country + "  " + language + "  " + secondryEmail + "  " + favoriteCity);
+        String email = preferences.getString(SharedPrefUtils.KeyEmail, null);
+        String name = preferences.getString(SharedPrefUtils.KeyName, null);
+        String contact = preferences.getString(SharedPrefUtils.keyContact, null);
+        String gender = preferences.getString(SharedPrefUtils.keyGender, null);
+        String city = preferences.getString(SharedPrefUtils.keyCity, null);
+        String country = preferences.getString(SharedPrefUtils.keyCountry, null);
+        String language = preferences.getString(SharedPrefUtils.keyLanguage, null);
+        String secondryEmail = preferences.getString(SharedPrefUtils.keySecondryEmail, null);
+        String favoriteCity = preferences.getString(SharedPrefUtils.keyFavoriteCity, null);
 
         userEmail.setText(email);
         userName.setText(name);
@@ -71,21 +66,26 @@ public class ProfileActivity extends AppCompatActivity {
         userSaveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // For Save
-                SharedPreferences sharedPref = getSharedPreferences("userLog", MODE_PRIVATE);
-                SharedPreferences.Editor editor = sharedPref.edit();
 
-                editor.putString("contact", userContactNumber.getText().toString());
-                editor.putString("gender", userGender.getText().toString());
-                editor.putString("city", userCity.getText().toString());
-                editor.putString("country", userCountry.getText().toString());
-                editor.putString("language", userLanguage.getText().toString());
-                editor.putString("secondryEmail", userSecondryEmail.getText().toString());
-                editor.putString("favoriteCity", userFavCity.getText().toString());
+                if (userContactNumber.getText().toString().isEmpty() || userGender.getText().toString().isEmpty() || userCity.getText().toString().isEmpty() || userCountry.getText().toString().isEmpty() || userLanguage.getText().toString().isEmpty() || userSecondryEmail.getText().toString().isEmpty() || userFavCity.getText().toString().isEmpty()) {
+                    Toast.makeText(ProfileActivity.this, "Enter All Details", Toast.LENGTH_SHORT).show();
+                } else {
+                    // For Save
+                    SharedPreferences sharedPref = getSharedPreferences(SharedPrefUtils.prefName, MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedPref.edit();
 
-                editor.apply();
+                    editor.putString(SharedPrefUtils.keyContact, userContactNumber.getText().toString());
+                    editor.putString(SharedPrefUtils.keyGender, userGender.getText().toString());
+                    editor.putString(SharedPrefUtils.keyCity, userCity.getText().toString());
+                    editor.putString(SharedPrefUtils.keyCountry, userCountry.getText().toString());
+                    editor.putString(SharedPrefUtils.keyLanguage, userLanguage.getText().toString());
+                    editor.putString(SharedPrefUtils.keySecondryEmail, userSecondryEmail.getText().toString());
+                    editor.putString(SharedPrefUtils.keyFavoriteCity, userFavCity.getText().toString());
 
-                Toast.makeText(ProfileActivity.this, "SharedPref updated", Toast.LENGTH_SHORT).show();
+                    editor.apply();
+
+                    Toast.makeText(ProfileActivity.this, "SharedPref updated", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 

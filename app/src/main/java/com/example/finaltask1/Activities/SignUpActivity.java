@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.finaltask1.R;
+import com.example.finaltask1.Utils.SharedPrefUtils;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -63,11 +64,11 @@ public class SignUpActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
 
 
-                            SharedPreferences sharedPreferences = getSharedPreferences("userLog", MODE_PRIVATE);
+                            SharedPreferences sharedPreferences = getSharedPreferences(SharedPrefUtils.prefName, MODE_PRIVATE);
                             SharedPreferences.Editor editor = sharedPreferences.edit();
 
-                            editor.putString("userName", name);
-                            editor.putString("userEmail", email);
+                            editor.putString(SharedPrefUtils.KeyName, name);
+                            editor.putString(SharedPrefUtils.KeyEmail, email);
                             editor.apply();
 
                             Toast.makeText(SignUpActivity.this, "Account Created",

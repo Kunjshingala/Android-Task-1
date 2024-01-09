@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.finaltask1.R;
+import com.example.finaltask1.Utils.SharedPrefUtils;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -89,11 +90,11 @@ public class Login extends AppCompatActivity {
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
 
-                                    SharedPreferences sharedPref = getSharedPreferences("userLog", MODE_PRIVATE);
+                                    SharedPreferences sharedPref = getSharedPreferences(SharedPrefUtils.prefName, MODE_PRIVATE);
                                     SharedPreferences.Editor editor = sharedPref.edit();
 
-                                    editor.putString("userEmail", email);
-                                    editor.putString("userName", name);
+                                    editor.putString(SharedPrefUtils.KeyEmail, email);
+                                    editor.putString(SharedPrefUtils.KeyName, name);
 
                                     editor.apply();
 
@@ -180,21 +181,21 @@ public class Login extends AppCompatActivity {
                             Toast.makeText(Login.this, "Success", Toast.LENGTH_SHORT).show();
 
                             FirebaseUser currentUser = mAuth.getCurrentUser();
+                            assert currentUser != null;
                             email = currentUser.getEmail();
                             name = currentUser.getDisplayName();
 
                             //Save name, email Into Shared Pref..
-                            SharedPreferences sharedPref = getSharedPreferences("userLog", MODE_PRIVATE);
+                            SharedPreferences sharedPref = getSharedPreferences(SharedPrefUtils.prefName, MODE_PRIVATE);
                             SharedPreferences.Editor editor = sharedPref.edit();
 
-                            editor.putString("userEmail", email);
-                            editor.putString("userName", name);
+                            editor.putString(SharedPrefUtils.KeyEmail, email);
+                            editor.putString(SharedPrefUtils.KeyName, name);
 
                             editor.apply();
 
-                            String loggedMail = sharedPref.getString("userEmail", "null");
-                            String loggedName = sharedPref.getString("userName", "null");
-                            Log.d("LoginProcess", "name and email is===>" + loggedMail + " " + loggedName);
+                            String disname = sharedPref.getString(SharedPrefUtils.KeyName, null);
+                            Log.d("Tag", "Name is ==>" + disname);
 
                             // Send user to Home Activity
                             Intent intent = new Intent(Login.this, RegisterActivity.class);
@@ -207,17 +208,5 @@ public class Login extends AppCompatActivity {
                         }
                     }
                 });
-    }
-
-    public void writeSharedPreferences(String email, String name) {
-
-        SharedPreferences sharedPref = getSharedPreferences("userLog", MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPref.edit();
-
-        editor.putString("userEmail", email);
-        editor.putString("userName", name);
-
-        editor.apply();
-
     }
 }

@@ -21,6 +21,7 @@ import androidx.appcompat.widget.Toolbar;
 import com.example.finaltask1.Helper.DBHelper;
 import com.example.finaltask1.DataModel.DataModal;
 import com.example.finaltask1.R;
+import com.example.finaltask1.Utils.SharedPrefUtils;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 
@@ -107,9 +108,9 @@ public class HomeActivity extends AppCompatActivity {
 
 
         // Get Shred Pref.
-        SharedPreferences preferences = getSharedPreferences("userLog", MODE_PRIVATE);
-        String name = preferences.getString("userName", "**");
-        String email = preferences.getString("userEmail", "*@gmail.com");
+        SharedPreferences preferences = getSharedPreferences(SharedPrefUtils.prefName, MODE_PRIVATE);
+        String name = preferences.getString(SharedPrefUtils.KeyName, "");
+        String email = preferences.getString(SharedPrefUtils.KeyEmail, "");
 
         headerName.setText(name);
         headerEmail.setText(email);

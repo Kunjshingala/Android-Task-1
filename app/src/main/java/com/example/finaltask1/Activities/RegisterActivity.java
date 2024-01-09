@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.finaltask1.R;
+import com.example.finaltask1.Utils.SharedPrefUtils;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -41,9 +42,9 @@ public class RegisterActivity extends AppCompatActivity {
 
         registerButton = findViewById(R.id.btn_register);
 
-        SharedPreferences sharedPref = getSharedPreferences("userLog", MODE_PRIVATE);
-        String email = sharedPref.getString("userEmail", "null");
-        String name = sharedPref.getString("userName", "null");
+        SharedPreferences sharedPref = getSharedPreferences(SharedPrefUtils.prefName, MODE_PRIVATE);
+        String email = sharedPref.getString(SharedPrefUtils.KeyEmail, "null");
+        String name = sharedPref.getString(SharedPrefUtils.KeyName, "null");
 
         userEmail.setText(email);
         userName.setText(name);
@@ -51,10 +52,10 @@ public class RegisterActivity extends AppCompatActivity {
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String email, name, contact, gender, city, country, language, secondryEmail, favoriteCity;
+                String contact, gender, city, country, language, secondryEmail, favoriteCity;
 
-                email = userEmail.getText().toString();
-                name = userEmail.getText().toString();
+//                email = userEmail.getText().toString();
+//                name = userEmail.getText().toString();
                 contact = userContactNumber.getText().toString();
                 gender = userGender.getText().toString();
                 city = userCity.getText().toString();
@@ -67,22 +68,19 @@ public class RegisterActivity extends AppCompatActivity {
                     Toast.makeText(RegisterActivity.this, "Enter all user details", Toast.LENGTH_SHORT).show();
                     return;
                 } else {
-                    SharedPreferences preferences = getSharedPreferences("userLog", MODE_PRIVATE);
+                    SharedPreferences preferences = getSharedPreferences(SharedPrefUtils.prefName, MODE_PRIVATE);
                     SharedPreferences.Editor editor = preferences.edit();
 
-                    editor.putString("userEmail", email);
-                    editor.putString("userName", name);
-                    editor.putString("contact", contact);
-                    editor.putString("gender", gender);
-                    editor.putString("city", city);
-                    editor.putString("country", country);
-                    editor.putString("language", language);
-                    editor.putString("secondryEmail", secondryEmail);
-                    editor.putString("favoriteCity", favoriteCity);
+//                    editor.putString(SharedPrefUtils.KeyEmail, email);
+//                    editor.putString(SharedPrefUtils.KeyName, name);
+                    editor.putString(SharedPrefUtils.keyContact, contact);
+                    editor.putString(SharedPrefUtils.keyGender, gender);
+                    editor.putString(SharedPrefUtils.keyCity, city);
+                    editor.putString(SharedPrefUtils.keyCountry, country);
+                    editor.putString(SharedPrefUtils.keyLanguage, language);
+                    editor.putString(SharedPrefUtils.keySecondryEmail, secondryEmail);
+                    editor.putString(SharedPrefUtils.keyFavoriteCity, favoriteCity);
                     editor.apply();
-
-                    String method = "Id";
-                    writeSharedPreferences(method, email, name);
 
                     Toast.makeText(RegisterActivity.this, "Sign Up done", Toast.LENGTH_SHORT).show();
 
@@ -92,20 +90,4 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
     }
-
-    public void writeSharedPreferences(String loginMethod, String email, String name) {
-
-        SharedPreferences sharedPref = getSharedPreferences("userLog", MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPref.edit();
-
-        editor.putString("LoginMethod", loginMethod);
-        editor.putString("userEmail", email);
-        editor.putString("userName", name);
-
-        editor.apply();
-
-        String loginmethodcheck = sharedPref.getString("LoginMethod", "null");
-        Log.d("Check", "Login method which save is: " + loginmethodcheck);
-    }
-
 }

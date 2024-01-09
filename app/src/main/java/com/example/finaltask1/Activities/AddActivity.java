@@ -50,14 +50,18 @@ public class AddActivity extends AppCompatActivity {
                 String secondaryEmail = userSecondryEmail.getText().toString();
                 String favoriteCity = userFavCity.getText().toString();
 
-                boolean isAdd = dbHelper.addUser(email, name, contact, gender, city, country, language, secondaryEmail, favoriteCity);
-//
-                if (isAdd) {
-                    Toast.makeText(AddActivity.this, "Add successfully", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(AddActivity.this, HomeActivity.class);
-                    startActivity(intent);
+                if (email.isEmpty() || name.isEmpty() || contact.isEmpty() || gender.isEmpty() || city.isEmpty() || country.isEmpty() || language.isEmpty() || secondaryEmail.isEmpty() || favoriteCity.isEmpty()) {
+                    Toast.makeText(AddActivity.this, "Enter All Details", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(AddActivity.this, "Something goes wrong", Toast.LENGTH_SHORT).show();
+                    boolean isAdd = dbHelper.addUser(email, name, contact, gender, city, country, language, secondaryEmail, favoriteCity);
+                    if (isAdd) {
+                        Toast.makeText(AddActivity.this, "Add successfully", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(AddActivity.this, HomeActivity.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(intent);
+                    } else {
+                        Toast.makeText(AddActivity.this, "Something goes wrong", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         });
