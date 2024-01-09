@@ -5,101 +5,97 @@
     android:layout_height="match_parent"
     android:layout_gravity="center"
     android:orientation="vertical"
-    android:padding="20dp"
-    tools:context=".Activities.ProfileActivity">
-
+    android:padding="10dp"
+    tools:context=".Activities.RegisterActivity">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="50dp"
+        android:layout_margin="10dp"
+        android:layout_marginTop="10dp"
         android:gravity="center"
-        android:text="@string/profile"
-        android:textColor="@color/black"
+        android:text="@string/register"
         android:textSize="30sp"
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/loggedName"
+        android:id="@+id/regi_Email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:gravity="center"
-        android:inputType="text"
-        android:text="@string/name"
-        android:textSize="30sp" />
-
-    <TextView
-        android:id="@+id/loggedEmail"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_margin="10dp"
         android:gravity="center"
         android:text="@string/email"
-        android:textSize="20sp" />
+        android:textSize="25sp" />
 
-    <EditText
-        android:id="@+id/loggedContact"
+    <TextView
+        android:id="@+id/regi_Name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_marginBottom="20dp"
+        android:gravity="center"
+        android:text="@string/name"
+        android:textSize="25sp" />
+
+    <EditText
+        android:id="@+id/regi_Contact"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/contact_number"
         android:inputType="text"
-        android:text="@string/contact_number"
         android:textSize="15sp" />
 
     <EditText
-        android:id="@+id/loggedGender"
+        android:id="@+id/regi_Gender"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:hint="@string/gender"
         android:inputType="text"
-        android:text="@string/gender"
         android:textSize="15sp" />
 
     <EditText
-        android:id="@+id/loggedCity"
+        android:id="@+id/regi_City"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:hint="@string/city"
         android:inputType="text"
-        android:text="@string/city"
         android:textSize="15sp" />
 
     <EditText
-        android:id="@+id/loggedCountry"
+        android:id="@+id/regi_Country"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:hint="@string/country"
         android:inputType="text"
-        android:text="@string/country"
         android:textSize="15sp" />
 
     <EditText
-        android:id="@+id/loggedLanguage"
+        android:id="@+id/regi_Language"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:hint="@string/language"
         android:inputType="text"
-        android:text="@string/language"
         android:textSize="15sp" />
 
     <EditText
-        android:id="@+id/loggedSecondryEmail"
+        android:id="@+id/regi_SecondryEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:hint="@string/secondary_email"
         android:inputType="text"
-        android:text="@string/secondary_email"
         android:textSize="15sp" />
 
     <EditText
-        android:id="@+id/loggedFavoriteCity"
+        android:id="@+id/regi_FavoriteCity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:hint="@string/favorite_city"
         android:inputType="text"
-        android:text="@string/favorite_city"
         android:textSize="15sp" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_saveUser"
+    <Button
+        android:id="@+id/btn_register"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="50dp"
-        android:background="#9C27B0"
-        android:text="@string/save" />
+        android:text="@string/register" />
 </LinearLayout>

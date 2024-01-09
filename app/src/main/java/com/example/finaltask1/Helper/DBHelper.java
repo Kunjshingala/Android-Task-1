@@ -1,4 +1,4 @@
-package com.example.finaltask1;
+package com.example.finaltask1.Helper;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -35,8 +35,10 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     public boolean addUser(String email, String name, String contact, String gender, String city, String country, String language, String secondaryEmail, String favoriteCity) {
+
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
+
         contentValues.put("email", email);
         contentValues.put("name", name);
         contentValues.put("contact", contact);

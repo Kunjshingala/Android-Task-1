@@ -1,4 +1,4 @@
-package com.example.finaltask1;
+package com.example.finaltask1.Activities;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -15,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.finaltask1.DataModel.DataModal;
+import com.example.finaltask1.R;
 
 import java.util.ArrayList;
 

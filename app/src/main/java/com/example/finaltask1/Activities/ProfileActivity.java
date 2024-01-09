@@ -1,8 +1,9 @@
-package com.example.finaltask1;
+package com.example.finaltask1.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,6 +11,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.finaltask1.R;
 
 public class ProfileActivity extends AppCompatActivity {
 
@@ -42,15 +45,15 @@ public class ProfileActivity extends AppCompatActivity {
         Log.d("SharedPref", "============> Pref Get");
 
         //set EditText value
-        String email = preferences.getString("userEmail", "**");
-        String name = preferences.getString("userName", "*@gmail.com");
-        String contact = preferences.getString("contact", "*8751");
-        String gender = preferences.getString("gender", "*male");
-        String city = preferences.getString("city", "*kasol");
-        String country = preferences.getString("country", "*North Korea");
-        String language = preferences.getString("language", "*Chinese");
-        String secondryEmail = preferences.getString("secondryEmail", "*2@gmail.com");
-        String favoriteCity = preferences.getString("favoriteCity", "*panjab");
+        String email = preferences.getString("userEmail", null);
+        String name = preferences.getString("userName", null);
+        String contact = preferences.getString("contact", null);
+        String gender = preferences.getString("gender", null);
+        String city = preferences.getString("city", null);
+        String country = preferences.getString("country", null);
+        String language = preferences.getString("language", null);
+        String secondryEmail = preferences.getString("secondryEmail", null);
+        String favoriteCity = preferences.getString("favoriteCity", null);
 
         Log.d("userDatails", "get values=======>" + email + "  " + name + "  " + contact + "  " + gender + "  " + city + "  " + country + "  " + language + "  " + secondryEmail + "  " + favoriteCity);
 
@@ -80,15 +83,7 @@ public class ProfileActivity extends AppCompatActivity {
                 editor.putString("secondryEmail", userSecondryEmail.getText().toString());
                 editor.putString("favoriteCity", userFavCity.getText().toString());
 
-                Log.d("userDatails", "set values in pref=======>" + userContactNumber.getText().toString() + "  " + userGender.getText().toString());
                 editor.apply();
-
-                String updatedContact = sharedPref.getString("contact", null);
-                if (updatedContact == null) {
-                    Log.d("updatedContact", "new contact is null");
-                } else {
-                    Log.d("updatedContact", "new contact is " + updatedContact);
-                }
 
                 Toast.makeText(ProfileActivity.this, "SharedPref updated", Toast.LENGTH_SHORT).show();
             }

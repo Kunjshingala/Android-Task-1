@@ -1,4 +1,4 @@
-package com.example.finaltask1;
+package com.example.finaltask1.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
@@ -8,6 +8,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.example.finaltask1.Helper.DBHelper;
+import com.example.finaltask1.R;
 
 public class AddActivity extends AppCompatActivity {
 

@@ -22,4 +22,9 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="save">Save</string>
     <string name="or">OR</string>
+    <string name="sign_in_with_google">Sign In With Google</string>
+    <string name="sign_in_to_your_account">Sign in to your account.</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="splash_screen">Splash Screen</string>
+    <string name="sampleEmail">email@email.com</string>
 </resources>

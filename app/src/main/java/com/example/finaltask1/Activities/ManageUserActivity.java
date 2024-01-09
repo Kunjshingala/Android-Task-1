@@ -1,4 +1,4 @@
-package com.example.finaltask1;
+package com.example.finaltask1.Activities;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,7 +11,8 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
-import com.example.finaltask1.DataModel.DataModal;
+import com.example.finaltask1.Helper.DBHelper;
+import com.example.finaltask1.R;
 
 import java.util.ArrayList;
 

@@ -1,4 +1,4 @@
-package com.example.finaltask1;
+package com.example.finaltask1.Activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -11,16 +11,16 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
-import android.window.OnBackInvokedDispatcher;
 
 import androidx.appcompat.widget.Toolbar;
 
 
+import com.example.finaltask1.Helper.DBHelper;
 import com.example.finaltask1.DataModel.DataModal;
+import com.example.finaltask1.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 
@@ -97,7 +97,7 @@ public class HomeActivity extends AppCompatActivity {
                     Intent intent = new Intent(HomeActivity.this, ProfileActivity.class);
                     startActivity(intent);
                 } else if (id == R.id.toLogout) {
-                    Intent intent = new Intent(HomeActivity.this, Login.class);
+                    Intent intent = new Intent(HomeActivity.this, LogoutActivity.class);
                     startActivity(intent);
                 }
                 drawerLayout.closeDrawer(GravityCompat.START);
